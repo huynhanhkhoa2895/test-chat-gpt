@@ -49,7 +49,6 @@ const withForm = (FieldsComponent: FC<any>, schema?: Yup.ObjectSchema<any>) => {
         apiKey: process.env.NEXT_PUBLIC_API_KEY,
         dangerouslyAllowBrowser: true
       });
-      console.log("process.env.NEXT_PUBLIC_API_KEY",process.env.NEXT_PUBLIC_API_KEY)
       let index = 0;
       const stream = await openai.chat.completions.create({
         messages: dataChat,
@@ -76,21 +75,21 @@ const withForm = (FieldsComponent: FC<any>, schema?: Yup.ObjectSchema<any>) => {
       // })
       //   .then(res => res.body.getReader())
       //   .then(async (stream) => {
-      //     // const decoder = new TextDecoder()
-      //     // const chunk = await stream.read()
-      //     // const {done,value} = chunk;
-      //     // console.log(decoder.decode(value))
-      //     // let index = 0;
-      //     // for await (const part of stream.data) {
-      //     //
-      //     //     const content: string = part.choices[0]?.delta?.content || '';
-      //     //     if(index === 0) {
-      //     //       _addChat({role: 'assistant',content})
-      //     //     }else{
-      //     //       _updateChat(lastIndexOfList,{role: 'assistant',content})
-      //     //     }
-      //     //     index++;
-      //     // }
+      //     const decoder = new TextDecoder()
+      //     const chunk = await stream.read()
+      //     const {done,value} = chunk;
+      //     console.log(decoder.decode(value))
+      //     let index = 0;
+      //     for await (const part of stream.data) {
+      //
+      //         const content: string = part.choices[0]?.delta?.content || '';
+      //         if(index === 0) {
+      //           _addChat({role: 'assistant',content})
+      //         }else{
+      //           _updateChat(lastIndexOfList,{role: 'assistant',content})
+      //         }
+      //         index++;
+      //     }
       //
       //   }).catch((e) => {
       //     console.log("error", e)

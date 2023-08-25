@@ -12,20 +12,15 @@ export async function POST(req: Request) {
 
 
   try {
-    // const params: OpenAI.Chat.CompletionCreateParams = {
-    //   messages: body.data,
-    //   model: 'gpt-3.5-turbo',
-    // };
-    // const completion: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
     const openai = new OpenAI({
       apiKey: process.env.NEXT_PUBLIC_API_KEY,
     });
 
-    const stream = openai.chat.completions.create({
+    const stream = await openai.chat.completions.create({
       messages: body.data,
       model: 'gpt-3.5-turbo',
       stream: true,
-    });
+    }).asResponse();
     return new Response(stream,{
       headers: {
         "Access-Control-Allow-Origin": "*",
